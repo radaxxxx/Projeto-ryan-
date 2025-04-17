@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY+RY</title>
+<style>
+    body { font-family: Arial, Helvetica, sans-serif;
+    padding: 40%;
+    background: #f2f2f2 ;
+}
+label, imput{
+    margin: 10px 0;
+    display: block;
+}
+.resultado{ 
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+   <h1> Contagem de Dias entres Datas</h1>
+
+   <label for="data1">Data Inicial</label>
+   <input type="date" id="data1">
+
+   <label for="data2">Data Final</label>
+   <input type="date" id="data2">
+
+   <button onclick="calcularDiferenca()">Calcular</button>
+
+   <div class="resultado"id resultado></div>
+   <script>
+    function calcularDiferenca() {
+        const data1 = new Date(document.getElementById("data1").value);
+        const data2 = new Date(document.getElementById("data2").value);
+
+        if (isNaN(data1) || isNaN(data2)) {
+            document.getElementById("resultado").textContent = "Por favor, selecione as duas datas.";
+            return;
+        }
+
+        const diffEmMs = Math.abs(data2 - data1);
+        const diffDias = Math.ceil(diffEmMs / (1000 * 60 * 60 * 24));
+
+        document.getElementById("resultado").textContent =
+            `A diferença é de ${diffDias} dia(s).`;
+    }
+</script>
+</body>
+</html>
